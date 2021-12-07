@@ -1,13 +1,146 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+.calccontainer {
+  position: relative;
+  left: 20px;
+  top: 50px;
+}
+
+.calcitem {
+  margin: 10px;
+  width: 70px;
+  height: 30px;
+}
+
+.expressionscreen {
+  border: 1px solid green;
+  text-align: center;
+  width: 500px;
+  position: fixed;
+  left: 390px;
+  top: 50px;
+  height: 30px;
+  font-size: 25px;
+  padding-top: 15px;
+  background-color: white;
+}
+
+.calcscreentotal {
+  font-size: 30px;
+  position: fixed;
+  left: 500px;
+  top: 120px;
+}
+
+.calcbuttons {
+  position: fixed;
+  width: 400px;
+  left: 450px;
+  top: 180px;
+}
+
+.calc {
+  position: fixed;
+  left: 200px;
+  top: 200px;
+}
+
+.prevvalue {
+  position: fixed;
+  left: 475px;
+  top: 430px;
+}
+
+.expressionscontainer {
+  position: fixed;
+  left: 800px;
+  top: 10px;
+  width: 250px;
+  line-height: 15px;
+  height: 20px;
+}
+
+.expressionitem {
+  border: 1px solid green;
+  padding: 10px;
+  margin: 3px;
+}
+
+.numinput {
+  width: 92px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+#fninput {
+  width: 60px;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.calclabel {
+  margin-left: 10px;
+  margin-right: 23px;
+}
+
+#descriptor {
+  margin-left: 20px;
+  margin-right: 23px;
+  position: relative;
+  top: 25px;
+  width: 212px;
+  height: 36px;
+}
+
+#savebutton {
+  position: fixed;
+  left: 200px;
+  top: 160px;
+  width: 110px;
+  height: 40px;
+  background-color: lightblue;
+  border-radius: 5px;
+  font-size: 17px;
+  box-shadow: 2px 2px 2px blue;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+}
+
+#prevbutton {
+  position: fixed;
+  left: 330px;
+  top: 160px;
+  width: 110px;
+  height: 40px;
+  background-color: lightblue;
+  border-radius: 5px;
+  font-size: 17px;
+  box-shadow: 2px 2px 2px blue;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+}
+
+#expressionhead {
+  width: 550px;
+}
+
+#notelabel {
+  margin-left: 41px;
+}
+
+#savedmessage {
+  color: green;
+  text-shadow: 1px 1px rgb(82, 185, 82);
 }
