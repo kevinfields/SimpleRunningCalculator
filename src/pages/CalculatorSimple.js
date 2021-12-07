@@ -82,11 +82,22 @@ const CalculatorSimple = () => {
     for (let i = 0; i < expressions.length; i++) {
       let single = expressions[i].split(" : ");
       console.log("single: " + single);
-      if (expressions[i] === expression || expression == single[0]) {
+      if (expressions[i] === expression || expression === single[0]) {
         setSaved(true);
       }
     }
-  }, [response, first, second, funct, note, error, expression, latest, saved]);
+  }, [
+    response,
+    first,
+    second,
+    funct,
+    note,
+    error,
+    expression,
+    expressions,
+    latest,
+    saved,
+  ]);
 
   const save = () => {
     if (expressions.length >= 10) {
