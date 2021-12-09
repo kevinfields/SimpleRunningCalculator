@@ -144,3 +144,22 @@ code {
   color: green;
   text-shadow: 1px 1px rgb(82, 185, 82);
 }
+
+#hometitle {
+  text-align: center;
+}
+
+#useLocalStorageTester {
+  position: fixed;
+  left: 200px;
+  right: 200px;
+  width: 200px;
+  height: 200px;
+  border: 1px solid blue;
+}
+
+#randomstring {
+  position: fixed;
+  left: 500px;
+  top: 200px;
+}

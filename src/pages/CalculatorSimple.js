@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import ExpressionsList from "../components/ExpressionsList";
+import useLocalStorage from "../hooks/useLocalStorage";
 
 const CalculatorSimple = () => {
   const [first, setFirst] = useState("0");
@@ -7,7 +8,7 @@ const CalculatorSimple = () => {
   const [funct, setFunct] = useState("+");
   const [response, setResponse] = useState(0);
   const [expression, setExpression] = useState("");
-  const [expressions, setExpressions] = useState([]);
+  const [expressions, setExpressions] = useLocalStorage("expression", []);
   const [error, setError] = useState(false);
   const [note, setNote] = useState("");
   const [latest, setLatest] = useState("");
