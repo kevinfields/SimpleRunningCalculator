@@ -21,35 +21,176 @@ const consonantArray = [
   "z",
 ];
 
-function customArraySelector(letters, subtract) {
-  //takes array 'letters' and boolean 'subtract'. If subtract is true,
-  //creates an array of all consonants minus those included in 'letters'.
-  //If subtract is false, it simply keeps the original 'letters' parameter.
-  if (subtract) {
-    let newArray = [];
-    let removed = letters;
-    for (let i = 0; i < consonantArray.length; i++) {
-      if (!removed.includes(consonantArray[i])) {
-        newArray = newArray + consonantArray[i];
-      }
-    }
-    //returns a random item from the array it has made
-    return newArray[Math.floor(Math.random() * newArray.length)];
-  }
-  return letters[Math.floor(Math.random() * letters.length)];
-}
+const doubleConsonantEnd = [
+  "bt",
+  "bs",
+  "ct",
+  "ch",
+  "cs",
+  "ck",
+  "dd",
+  "ds",
+  "ft",
+  "fs",
+  "ff",
+  "gh",
+  "gs",
+  "ks",
+  "lb",
+  "ld",
+  "lf",
+  "lk",
+  "lm",
+  "ln",
+  "lp",
+  "ls",
+  "ll",
+  "lt",
+  "mb",
+  "mp",
+  "ms",
+  "nd",
+  "ng",
+  "nk",
+  "ns",
+  "nt",
+  "pt",
+  "ps",
+  "ph",
+  "rb",
+  "rd",
+  "rf",
+  "rg",
+  "rk",
+  "rm",
+  "rn",
+  "rp",
+  "rs",
+  "rt",
+  "sh",
+  "sh",
+  "sk",
+  "sm",
+  "sp",
+  "ss",
+  "st",
+  "th",
+  "ts",
+  "wd",
+  "wl",
+  "wn",
+  "ws",
+  "zz",
+];
+const doubleConsonantStart = [
+  "bl",
+  "br",
+  "cl",
+  "cr",
+  "ch",
+  "dr",
+  "fl",
+  "fr",
+  "gl",
+  "gr",
+  "kn",
+  "pl",
+  "pr",
+  "ph",
+  "sc",
+  "sh",
+  "sk",
+  "sl",
+  "sm",
+  "sn",
+  "sp",
+  "sq",
+  "st",
+  "sw",
+  "th",
+  "tr",
+  "tw",
+  "wr",
+];
+const tripleConsonantStart = [
+  "chr",
+  "str",
+  "scr",
+  "scr",
+  "shr",
+  "spl",
+  "spr",
+  "thr",
+];
+const tripleConsonantEnd = [
+  "cts",
+  "cks",
+  "dds",
+  "fts",
+  "ffs",
+  "ghs",
+  "lbs",
+  "lds",
+  "lfs",
+  "lgs",
+  "lks",
+  "lms",
+  "lns",
+  "lps",
+  "lls",
+  "lts",
+  "mbs",
+  "mps",
+  "nds",
+  "ngs",
+  "nks",
+  "nns",
+  "nts",
+  "pts",
+  "pps",
+  "phs",
+  "rbs",
+  "rds",
+  "rgs",
+  "rks",
+  "rms",
+  "rns",
+  "rps",
+  "rrs",
+  "rts",
+  "sks",
+  "sms",
+  "sps",
+  "sts",
+  "tch",
+  "ths",
+];
 
-export default function getConsonant(prev, next) {
-  //decides array of letters to choose from based on the letter before it and
-  //whether the next letter will be a consonant or vowel.
-  switch (prev) {
-    case "a":
-      if (next === "v") {
-        return customArraySelector([""], true);
-      } else {
-        return customArraySelector(["j", "q", "x", "z"], true);
+export default function getConsonant(next, length, position) {
+  //if next is false, this segment cannot end with q. If it is true, it can.
+
+  switch (length) {
+    case 1:
+      return consonantArray[Math.floor(Math.random() * consonantArray.length)];
+    case 2:
+      if (position === "end") {
+        return doubleConsonantEnd[
+          Math.floor(Math.random() * doubleConsonantEnd.length)
+        ];
       }
+      return doubleConsonantStart[
+        Math.floor(Math.random() * doubleConsonantStart.length)
+      ];
+    case 3:
+      if (position === "end") {
+        return tripleConsonantEnd[
+          Math.floor(Math.random() * tripleConsonantEnd.length)
+        ];
+      }
+      return tripleConsonantStart[
+        Math.floor(Math.random() * tripleConsonantStart.length)
+      ];
     default:
-      return customArraySelector(["q", "x"], true);
+      return "?";
   }
 }

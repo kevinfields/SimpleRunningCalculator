@@ -1,55 +1,40 @@
 let vowelArray = ["a", "e", "i", "o", "u", "y"];
-
-const consonantArray = [
-  "b",
-  "c",
-  "d",
-  "f",
-  "g",
-  "h",
-  "j",
-  "k",
-  "l",
-  "m",
-  "n",
-  "p",
-  "r",
-  "s",
-  "t",
-  "v",
-  "w",
-  "x",
-  "y",
-  "z",
+let doubleVowelArray = [
+  "ai",
+  "au",
+  "ea",
+  "ee",
+  "ia",
+  "ie",
+  "io",
+  "oa",
+  "oo",
+  "ou",
+  "ua",
+  "ue",
+  "ui",
 ];
+let qArray = ["ua", "ue", "ui"];
 
-function customArraySelector(letters) {
-  return letters[Math.floor(Math.random() * letters.length)];
-}
-
-export default function getVowel(prev, next) {
-  if (consonantArray.includes(prev) && prev !== "y") {
-    return vowelArray[Math.floor(Math.random() * vowelArray.length)];
-  } else {
-    switch (prev) {
-      case "a":
-        return customArraySelector(["i", "u"]);
-      case "e":
-        return customArraySelector(["a", "e", "o"]);
-      case "i":
-        return customArraySelector(["a", "o"]);
-      case "o":
-        return customArraySelector(["a", "i", "o", "u"]);
-      case "u":
-        return customArraySelector(["a", "e", "i", "o"]);
-      case "y":
-        if (next !== "v") {
-          return customArraySelector(["a", "e", "o"]);
-        } else {
-          return "e";
-        }
+export default function getVowel(prev, length) {
+  if (prev !== true) {
+    switch (length) {
+      case 1:
+        return vowelArray[Math.floor(Math.random() * vowelArray.length)];
+      case 2:
+        return doubleVowelArray[
+          Math.floor(Math.random() * doubleVowelArray.length)
+        ];
+      case 3:
+        return "eau";
       default:
-        return "e";
+        return "?";
+    }
+  } else {
+    if (length === 2) {
+      return qArray[Math.floor(Math.random() * qArray.length)];
+    } else {
+      return "?";
     }
   }
 }

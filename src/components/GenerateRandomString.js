@@ -39,17 +39,10 @@ const GenerateRandomString = () => {
     for (let i = 0; i < length; i++) {
       switch (structureArray[i]) {
         case "c":
-          setRandomArray(
-            (prevArray) =>
-              prevArray + getConsonant(prevArray[i - 1], structureArray[i + 1])
-          );
-
+          setRandomArray((prevArray) => prevArray + getConsonant(false, 1));
           break;
         case "v":
-          setRandomArray(
-            (prevArray) =>
-              prevArray + getVowel(prevArray[i - 1], structureArray[i + 1])
-          );
+          setRandomArray((prevArray) => prevArray + getVowel(false, 1));
           break;
         case " ":
           setRandomArray((prevArray) => prevArray + " ");

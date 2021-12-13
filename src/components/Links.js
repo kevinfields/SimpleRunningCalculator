@@ -14,6 +14,9 @@ const Links = () => {
           <Link to="/functioncalculator">Function Calculator</Link>
         </p>
         <p className="linkitem">
+          <Link to="/numberdata">Number Data</Link>
+        </p>
+        <p className="linkitem">
           <Link to="/randomstrings">Random String Generator</Link>
         </p>
       </nav>
