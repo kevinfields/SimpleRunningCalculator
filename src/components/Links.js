@@ -11,13 +11,16 @@ const Links = () => {
           <Link to="/runningcalculator">Running Calculator</Link>
         </p>
         <p className="linkitem">
-          <Link to="/functioncalculator">Function Calculator</Link>
+          <Link to="/basiccalculator">Basic Calculator</Link>
         </p>
         <p className="linkitem">
           <Link to="/numberdata">Number Data</Link>
         </p>
         <p className="linkitem">
           <Link to="/randomstrings">Random String Generator</Link>
+        </p>
+        <p className="linkitem">
+          <Link to="/timedgame">Timed Button Game</Link>
         </p>
       </nav>
     </section>

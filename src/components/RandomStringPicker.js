@@ -1,4 +1,5 @@
 import { useState } from "react";
+import getSoundFromArray from "../functions/getSoundFromArray";
 
 const xCCArray = [
   "bl",
@@ -22,7 +23,6 @@ const xCCArray = [
   "sm",
   "sn",
   "sp",
-  "sr",
   "st",
   "sw",
   "th",
@@ -162,9 +162,53 @@ const vCvArray = [
   "z",
 ];
 const cVcArray = ["a", "e", "i", "o", "u"];
-const CCxArray = ["ng", "nd"];
+const CCxArray = [
+  "ng",
+  "nd",
+  "bt",
+  "bs",
+  "ct",
+  "ch",
+  "ds",
+  "ff",
+  "ft",
+  "gh",
+  "gs",
+  "ck",
+  "lk",
+  "nk",
+  "sk",
+  "rk",
+  "ll",
+  "lm",
+  "lt",
+  "lp",
+  "ld",
+  "ls",
+  "lb",
+  "mp",
+  "mb",
+  "nt",
+  "ms",
+  "ns",
+  "pt",
+  "ps",
+  "rt",
+  "rs",
+  "rp",
+  "rb",
+  "st",
+  "sh",
+  "ss",
+  "sp",
+  "ts",
+  "th",
+  "wl",
+  "wd",
+  "zz",
+];
 const VVxArray = ["ue", "ea"];
-const CxArray = ["t", "l"];
+const CxArray = ["d", "g", "l", "m", "n", "p", "r", "s", "t", "w", "x", "y"];
 const VxArray = ["e", "a"];
 
 const RandomStringPicker = () => {
@@ -174,134 +218,55 @@ const RandomStringPicker = () => {
   const [fourth, setFourth] = useState("");
   const [last, setLast] = useState("");
 
-  //const [lastIndex, setLastIndex] = useState(2);
-
-  const firstSetter = (array) => {
-    //This works but there must be hundreds of easier ways
-
-    let soundValue;
-
-    //if the array has two letters per value they are seperated,
-    //so choose a random first letter from the options
-
-    if (array === xCCArray.join("") || array === xVVArray.join("")) {
-      soundValue = 2 * Math.floor(Math.random() * (array.length / 2));
-    } else {
-      //if the array has single letter values, just randomly choose one
-
-      soundValue = Math.floor(Math.random() * array.length);
-    }
-
-    let sound = array[soundValue];
-
-    //if the sound is split, add it's other half back
-    if (array === xCCArray.join("") || array === xVVArray.join("")) {
-      sound = sound + array[soundValue + 1];
-    }
-    setFirst(sound);
-  };
-
-  const secondSetter = (array) => {
-    let soundValue;
-    if (array === vCCvArray.join("") || array === cVVcArray.join("")) {
-      soundValue = 2 * Math.floor(Math.random() * (array.length / 2));
-    } else {
-      soundValue = Math.floor(Math.random() * array.length);
-    }
-    let sound = array[soundValue];
-    if (array === vCCvArray.join("") || array === cVVcArray.join("")) {
-      sound = sound + array[soundValue + 1];
-    }
-    setSecond(sound);
-  };
-
-  const middleSetter = (array) => {
-    let soundValue;
-    if (array === vCCvArray.join("") || array === cVVcArray.join("")) {
-      soundValue = 2 * Math.floor(Math.random() * (array.length / 2));
-    } else {
-      soundValue = Math.floor(Math.random() * array.length);
-    }
-    let sound = array[soundValue];
-    if (array === vCCvArray.join("") || array === cVVcArray.join("")) {
-      sound = sound + array[soundValue + 1];
-    }
-    setMiddle(sound);
-  };
-
-  const fourthSetter = (array) => {
-    let soundValue;
-    if (array === vCCvArray.join("") || array === cVVcArray.join("")) {
-      soundValue = 2 * Math.floor(Math.random() * (array.length / 2));
-    } else {
-      soundValue = Math.floor(Math.random() * array.length);
-    }
-    let sound = array[soundValue];
-    if (array === vCCvArray.join("") || array === cVVcArray.join("")) {
-      sound = sound + array[soundValue + 1];
-    }
-    setFourth(sound);
-  };
-
-  const lastSetter = (array) => {
-    let soundValue;
-    if (array === CCxArray.join("") || array === VVxArray.join("")) {
-      soundValue = 2 * Math.floor(Math.random() * (array.length / 2));
-    } else {
-      soundValue = Math.floor(Math.random() * array.length);
-    }
-    let sound = array[soundValue];
-    if (array === CCxArray.join("") || array === VVxArray.join("")) {
-      sound = sound + array[soundValue + 1];
-    }
-    setLast(sound);
-  };
-
   const refresh = () => {
-    if (xCCArray.includes(first)) {
-      firstSetter(xCCArray.join(""));
-    } else if (xCArray.includes(first)) {
-      firstSetter(xCArray.join(""));
-    } else if (xVVArray.includes(first)) {
-      firstSetter(xVVArray.join(""));
-    } else {
-      firstSetter(xVArray.join(""));
-    }
-    if (vCCvArray.includes(second)) {
-      secondSetter(vCCvArray.join(""));
-    } else if (vCvArray.includes(second)) {
-      secondSetter(vCvArray.join(""));
-    } else if (cVVcArray.includes(second)) {
-      secondSetter(cVVcArray.join(""));
-    } else {
-      secondSetter(cVcArray.join(""));
-    }
-    if (vCCvArray.includes(middle)) {
-      middleSetter(vCCvArray.join(""));
-    } else if (vCvArray.includes(middle)) {
-      middleSetter(vCvArray.join(""));
-    } else if (cVVcArray.includes(middle)) {
-      middleSetter(cVVcArray.join(""));
-    } else {
-      middleSetter(cVcArray.join(""));
-    }
-    if (vCCvArray.includes(fourth)) {
-      fourthSetter(vCCvArray.join(""));
-    } else if (vCvArray.includes(fourth)) {
-      fourthSetter(vCvArray.join(""));
-    } else if (cVVcArray.includes(fourth)) {
-      fourthSetter(cVVcArray.join(""));
-    } else {
-      fourthSetter(cVcArray.join(""));
-    }
-    if (CCxArray.includes(last)) {
-      lastSetter(CCxArray.join(""));
-    } else if (CxArray.includes(last)) {
-      lastSetter(CxArray.join(""));
-    } else if (VVxArray.includes(last)) {
-      lastSetter(VVxArray.join(""));
-    } else {
-      lastSetter(VxArray.join(""));
+    const positionArray = [first, second, middle, fourth, last];
+
+    const fn = (sound, i) => {
+      switch (i) {
+        case 0:
+          setFirst(sound);
+          break;
+        case 1:
+          setSecond(sound);
+          break;
+        case 2:
+          setMiddle(sound);
+          break;
+        case 3:
+          setFourth(sound);
+          break;
+        case 4:
+          setLast(sound);
+          break;
+        default:
+          setFirst(sound);
+          break;
+      }
+    };
+
+    for (let i = 0; i < positionArray.length; i++) {
+      if (i === 0) {
+        let startArrays = [xCCArray, xCArray, xVVArray, xVArray];
+        for (let j = 0; j < startArrays.length; j++) {
+          if (startArrays[j].includes(positionArray[i])) {
+            fn(getSoundFromArray(startArrays[j].join("")), i);
+          }
+        }
+      } else if (i < 4) {
+        let middleArrays = [vCCvArray, cVVcArray, cVcArray, vCvArray];
+        for (let j = 0; j < middleArrays.length; j++) {
+          if (middleArrays[j].includes(positionArray[i])) {
+            fn(getSoundFromArray(middleArrays[j].join("")), i);
+          }
+        }
+      } else {
+        let endArrays = [CCxArray, CxArray, VVxArray, VxArray];
+        for (let j = 0; j < endArrays.length; j++) {
+          if (endArrays[j].includes(positionArray[i])) {
+            fn(getSoundFromArray(endArrays[j].join("")), i);
+          }
+        }
+      }
     }
   };
 
@@ -309,14 +274,17 @@ const RandomStringPicker = () => {
     <div>
       <select
         id="soundinputfirst"
-        onChange={(e) => firstSetter(e.target.value)}
+        onChange={(e) => setFirst(getSoundFromArray(e.target.value))}
       >
         <option value={xCArray.join("")}>C</option>
         <option value={xVArray.join("")}>V</option>
         <option value={xCCArray.join("")}>CC</option>
         <option value={xVVArray.join("")}>VV</option>
       </select>
-      <select id="soundinput2" onChange={(e) => secondSetter(e.target.value)}>
+      <select
+        id="soundinput2"
+        onChange={(e) => setSecond(getSoundFromArray(e.target.value))}
+      >
         <option value={vCvArray.join("")}>C</option>
         <option value={cVcArray.join("")}>V</option>
         <option value={vCCvArray.join("")}>CC</option>
@@ -324,20 +292,26 @@ const RandomStringPicker = () => {
       </select>
       <select
         id="soundinputmiddle"
-        onChange={(e) => middleSetter(e.target.value)}
+        onChange={(e) => setMiddle(getSoundFromArray(e.target.value))}
       >
         <option value={vCvArray.join("")}>C</option>
         <option value={cVcArray.join("")}>V</option>
         <option value={vCCvArray.join("")}>CC</option>
         <option value={cVVcArray.join("")}>VV</option>
       </select>
-      <select id="soundinput4" onChange={(e) => fourthSetter(e.target.value)}>
+      <select
+        id="soundinput4"
+        onChange={(e) => setFourth(getSoundFromArray(e.target.value))}
+      >
         <option value={vCvArray.join("")}>C</option>
         <option value={cVcArray.join("")}>V</option>
         <option value={vCCvArray.join("")}>CC</option>
         <option value={cVVcArray.join("")}>VV</option>
       </select>
-      <select id="soundinputlast" onChange={(e) => lastSetter(e.target.value)}>
+      <select
+        id="soundinputlast"
+        onChange={(e) => setLast(getSoundFromArray(e.target.value))}
+      >
         <option value={CxArray.join("")}>C</option>
         <option value={VxArray.join("")}>V</option>
         <option value={CCxArray.join("")}>CC</option>

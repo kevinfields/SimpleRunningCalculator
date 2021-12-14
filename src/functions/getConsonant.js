@@ -104,7 +104,6 @@ const doubleConsonantStart = [
   "sm",
   "sn",
   "sp",
-  "sq",
   "st",
   "sw",
   "th",
@@ -167,8 +166,6 @@ const tripleConsonantEnd = [
 ];
 
 export default function getConsonant(next, length, position) {
-  //if next is false, this segment cannot end with q. If it is true, it can.
-
   switch (length) {
     case 1:
       return consonantArray[Math.floor(Math.random() * consonantArray.length)];
