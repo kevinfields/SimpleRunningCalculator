@@ -33,11 +33,13 @@ const TimedGame = () => {
         }
       }, difficulty);
     }
-  }, [points, running, difficulty]);
+  }, [points, running, difficulty, score, totalClicks]);
 
   return (
     <div>
-      <button onClick={() => addScore(points)}>{points}</button>
+      {running ? (
+        <button onClick={() => addScore(points)}>{points}</button>
+      ) : null}
       <p>
         Score: {score} / {totalClicks}
       </p>
