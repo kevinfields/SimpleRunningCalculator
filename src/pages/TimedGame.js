@@ -11,9 +11,6 @@ const TimedGame = () => {
     setScore((score) => score + num);
   }
 
-  function pause() {
-    setRunning(!running);
-  }
   const newDifficulty = (count) => {
     setDifficulty(count);
     setTotalClicks(0);
@@ -25,7 +22,7 @@ const TimedGame = () => {
       setTotalClicks(0);
       setScore(0);
       setPoints(0);
-      pause();
+      setRunning(false);
     } else if (running) {
       setTimeout(() => {
         if (points > 0) {
@@ -54,7 +51,9 @@ const TimedGame = () => {
         <option value={200}>Hard</option>
         <option value={100}>Expert</option>
       </select>
-      <button onClick={pause}>{running ? "pause" : "play"}</button>
+      <button onClick={() => setRunning(!running)}>
+        {running ? "pause" : "play"}
+      </button>
     </div>
   );
 };
